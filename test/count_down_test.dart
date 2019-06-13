@@ -1,13 +1,15 @@
-import 'package:flutter_test/flutter_test.dart';
-
-import 'package:count_down/count_down.dart';
+import 'package:count_down_timer/count_down_timer.dart';
+import 'package:flutter/material.dart';
 
 void main() {
-  test('adds one to input values', () {
-    final calculator = Calculator();
-    expect(calculator.addOne(2), 3);
-    expect(calculator.addOne(-7), -6);
-    expect(calculator.addOne(0), 1);
-    expect(() => calculator.addOne(null), throwsNoSuchMethodError);
-  });
+  CountDownWidget(
+    startSeconds: 60,
+    onTapCallback: (timer) {
+      print('onTapCallback：current is ${timer.tick}s');
+    },
+    enableTS:
+    TextStyle(color: const Color(0xff00ff00)),
+    disableTS:
+    TextStyle(color: const Color(0xff999999)),
+  );
 }

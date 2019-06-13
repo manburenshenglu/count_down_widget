@@ -1,4 +1,4 @@
-library count_down;
+library count_down_timer;
 
 import 'dart:async';
 
@@ -6,14 +6,14 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 
 ///author xiejianlong
-///description 倒计时组件
+///description count down widget
 ///date 2019/6/11 14:53
 ///modify
 class CountDownWidget extends StatefulWidget {
   final int startSeconds;
   final TextStyle enableTS, disableTS;
 
-  /// 用户点击时的回调函数。
+  /// click callback
   final Function onTapCallback;
 
   CountDownWidget(
@@ -34,10 +34,8 @@ class _CountDownState extends State<CountDownWidget> {
   int _seconds;
   bool _enable = true;
 
-  /// 当前墨水瓶（`InkWell`）的字体样式。
   TextStyle inkWellStyle = _defaultEnableTS;
 
-  /// 当前墨水瓶（`InkWell`）的文本。
   String _verifyStr = '获取验证码';
 
   @override
