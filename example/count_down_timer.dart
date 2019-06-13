@@ -12,17 +12,15 @@ import 'package:flutter/material.dart';
 class CountDownWidget extends StatefulWidget {
   final int startSeconds;
   final TextStyle enableTS, disableTS;
-  final String verifyStr;
 
   /// click callback
   final Function onTapCallback;
 
   CountDownWidget(
       {this.startSeconds: 60,
-      this.onTapCallback,
-      this.enableTS,
-      this.disableTS,
-      this.verifyStr: '获取验证码'});
+        this.onTapCallback,
+        this.enableTS,
+        this.disableTS});
 
   @override
   _CountDownState createState() {
@@ -38,44 +36,41 @@ class _CountDownState extends State<CountDownWidget> {
 
   TextStyle inkWellStyle = _defaultEnableTS;
 
-  String _verifyStr;
+  String _verifyStr = '获取验证码';
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _seconds = widget.startSeconds;
-    _verifyStr = widget.verifyStr;
   }
-
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
     _cancelTimer();
   }
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return _enable
         ? InkWell(
-            child: Text(
-              '$_verifyStr',
-              style: inkWellStyle,
-            ),
-            onTap: (_seconds == widget.startSeconds)
-                ? () {
-                    _startTimer();
-                  }
-                : null,
-          )
+      child: Text(
+        '$_verifyStr',
+        style: inkWellStyle,
+      ),
+      onTap: (_seconds == widget.startSeconds)
+          ? () {
+        _startTimer();
+      }
+          : null,
+    )
         : InkWell(
-            child: Text(
-              '$_verifyStr',
-              style: _defaultDisableTS,
-            ),
-          );
+      child: Text(
+        '$_verifyStr',
+        style: _defaultDisableTS,
+      ),
+    );
   }
 
   void _startTimer() {
@@ -104,6 +99,7 @@ class _CountDownState extends State<CountDownWidget> {
 }
 
 final TextStyle _defaultEnableTS =
-    TextStyle(fontSize: 16, color: const Color(0xff00ff00));
+TextStyle(fontSize: 16, color: const Color(0xff00ff00));
 final TextStyle _defaultDisableTS =
-    TextStyle(fontSize: 16, color: const Color(0xff999999));
+TextStyle(fontSize: 16, color: const Color(0xff999999));
+

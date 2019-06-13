@@ -3,14 +3,12 @@ description: A new Flutter  countdown project that can be used to send SMS verif
 version: 0.0.4
 author: xiesongyang<xiesongyang0915@gmail.com>
 homepage: https://github.com/manburenshenglu/count_down_widget.git
-
 environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
