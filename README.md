@@ -10,7 +10,7 @@ A new Flutter  countdown project that can be used to send SMS verification code 
 
 ```python
 # add this line to your dependencies
-count_down_timer: ^0.0.1
+count_down_timer: ^0.0.4
 ```
 
 ```python
@@ -38,7 +38,7 @@ CountDownWidget(
 | onTapCallback        | Function （timer） |
 | enableTS        | TextStyle ： clickable TextStyle|
 | disableTS        | TextStyle ： unclickable TextStyle  |
-
+| verifyStr        | String  |
 
 ###  [GitHub](https://github.com/manburenshenglu/count_down_widget)
 
