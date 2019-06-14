@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 
 void main() {
   CountDownWidget(
-    startSeconds: 60,
+    startSeconds: 6,
     onTapCallback: (timer) {
       print('onTapCallback：current is ${timer.tick}s');
     },
-    enableTS:
-    TextStyle(color: const Color(0xff00ff00)),
-    disableTS:
-    TextStyle(color: const Color(0xff999999)),
+    language: CountDown.EN,
+    verifyStr: "Send",
+    enableTS: TextStyle(color: const Color(0xff000000)),
+    disableTS: TextStyle(color: const Color(0xff999999)),
   );
 }
