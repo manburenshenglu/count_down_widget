@@ -40,6 +40,8 @@ class Example extends StatelessWidget {
         onTapCallback: (timer) {
           print('onTapCallback：current is ${timer.tick}s');
         },
+        language: CountDown.EN,
+        verifyStr: "Send",
         enableTS: TextStyle(color: const Color(0xff00ff00)),
         disableTS: TextStyle(color: const Color(0xff999999)),
       ),
