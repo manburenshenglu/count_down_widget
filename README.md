@@ -41,7 +41,7 @@ CountDownWidget(
 | verifyStr        | String  |
 | language        | CountDown.EN or CountDown.ZH  |
 
-###  [GitHub](https://github.com/manburenshenglu/count_down_widget)
+###  [https://pub.flutter-io.cn/packages/count_down_timer]
 
 
 
