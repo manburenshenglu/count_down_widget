@@ -1,6 +1,6 @@
 name: count_down_timer
 description: A new Flutter  countdown project that can be used to send SMS verification code scenarios
-version: 0.0.5
+version: 0.0.6
 author: xiesongyang<xiesongyang0915@gmail.com>
 homepage: https://github.com/manburenshenglu/count_down_widget.git
 
