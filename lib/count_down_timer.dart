@@ -36,7 +36,7 @@ class CountDownWidget extends StatefulWidget {
       this.verifyStr,
       this.language: CountDown.ZH,
       this.phone: '',
-      this.widgetWidth: 60.0,
+      this.widgetWidth: 100.0,
       this.decoration,
       this.padding});
 
@@ -96,6 +96,13 @@ class _CountDownState extends State<CountDownWidget> {
                         : 'Please input phone number！',
                     toastLength: Toast.LENGTH_LONG);
               } else {
+                if (widget?.language == CountDown.ZH) {
+                  if (!isChinaPhoneLegal(widget?.phone)) {
+                    Fluttertoast.showToast(
+                        msg: '请输入正确的手机号！', toastLength: Toast.LENGTH_LONG);
+                    return;
+                  }
+                }
                 _startTimer();
               }
             }
