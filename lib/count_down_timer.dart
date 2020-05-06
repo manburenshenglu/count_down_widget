@@ -4,6 +4,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 ///author xiejianlong
 ///description count down widget
@@ -17,19 +18,27 @@ class CountDownWidget extends StatefulWidget {
   final TextStyle enableTS, disableTS;
   final String verifyStr;
   final CountDown language;
+  final String phone;
+  final double widgetWidth;
+  final Decoration decoration;
+  final EdgeInsetsGeometry padding;
 
   /// click callback
   final Function onTapCallback;
 
   CountDownWidget(
       {this.startSeconds: 60,
-        this.onTapCallback,
-        this.enableTS:
-        const TextStyle(fontSize: 16, color: const Color(0xff00ff00)),
-        this.disableTS:
-        const TextStyle(fontSize: 16, color: const Color(0xff999999)),
-        this.verifyStr,
-        this.language: CountDown.ZH});
+      this.onTapCallback,
+      this.enableTS:
+          const TextStyle(fontSize: 16, color: const Color(0xff00ff00)),
+      this.disableTS:
+          const TextStyle(fontSize: 16, color: const Color(0xff999999)),
+      this.verifyStr,
+      this.language: CountDown.ZH,
+      this.phone: '',
+      this.widgetWidth: 60.0,
+      this.decoration,
+      this.padding});
 
   @override
   _CountDownState createState() {
@@ -67,14 +76,29 @@ class _CountDownState extends State<CountDownWidget> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return InkWell(
-      child: Text(
-        '$_verifyStr',
-        style: _inkWellStyle,
+      child: Container(
+        decoration: widget?.decoration,
+        padding: widget?.padding,
+        alignment: Alignment.center,
+        width: widget?.widgetWidth,
+        child: Text(
+          '$_verifyStr',
+          style: _inkWellStyle,
+        ),
       ),
       onTap: (_enable && (_seconds == widget.startSeconds))
           ? () {
-        _startTimer();
-      }
+              if (widget?.phone?.isEmpty ?? true) {
+                print('CountDownWidget--------->  phone is empty!');
+                Fluttertoast.showToast(
+                    msg: widget?.language == CountDown.ZH
+                        ? '请先输入手机号！'
+                        : 'Please input phone number！',
+                    toastLength: Toast.LENGTH_LONG);
+              } else {
+                _startTimer();
+              }
+            }
           : null,
     );
   }
@@ -98,6 +122,12 @@ class _CountDownState extends State<CountDownWidget> {
       setState(() {});
       widget.onTapCallback(timer);
     });
+  }
+
+  bool isChinaPhoneLegal(String str) {
+    return RegExp(
+            r"^1([38][0-9]|4[579]|5[0-3,5-9]|6[6]|7[0135678]|9[89])\d{8}$")
+        .hasMatch(str);
   }
 
   void _cancelTimer() {
